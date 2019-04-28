@@ -13,9 +13,9 @@ EQUAL(X, type = TRUE, sdiag = FALSE, lambda = NULL,
 
 \item{type}{Should the loss function be symmetric? Default is TRUE.}
 
-\item{sdiag}{Should diagonal of inverse covariance be penalized? Default is FALSE.}
+\item{sdiag}{Should diagonal elements of inverse covariance be penalized? Default is FALSE.}
 
-\item{lambda}{user supplied tuning parameter; Default is NULL and the program compute its own
+\item{lambda}{user supplied tuning parameter; Default is NULL and the program will compute its own
 sequence based on \code{nlambda}.}
 
 \item{nlambda}{the length of the tuning parameter sequence which is available when lambda is NULL. Default is 50.}
@@ -24,10 +24,10 @@ sequence based on \code{nlambda}.}
 
 \item{maxIter}{Maximum number of iterations. Default is 1000.}
 
-\item{lambda.min.ratio}{smallest value for lambda, as a fraction of lambda.max which is available when lambda is NULL. 
+\item{lambda.min}{smallest value for lambda, as a fraction of lambda.max which is available when lambda is NULL. 
 Default is sqrt(log(p)/n).}
 
-\item{rho}{step parameter for the ADMM. Default is 1.}
+\item{rho}{step parameter for ADMM. Default is 1.}
 }
 \value{
 A list with components
