@@ -41,3 +41,4 @@ obj2<-CVEQUAL(X,type=FALSE)
 obj1$Omega[1:10,1:10]
 obj2$Omega[1:10,1:10]
 ```
+A line I wrote on my local computer
