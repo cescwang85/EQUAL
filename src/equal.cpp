@@ -1,6 +1,5 @@
 #include <RcppArmadillo.h>
 // [[Rcpp::depends(RcppArmadillo)]]
-
 // [[Rcpp::export]]
 arma::mat soft(arma::mat A,double a, double diag=0){
   a=abs(a);
