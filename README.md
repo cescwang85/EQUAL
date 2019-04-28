@@ -1,36 +1,40 @@
-# Introduction for the R package EQUAL
-We develop an R package EQUAL for the paper
+# Introduction for R package EQUAL
+We develop an R package EQUAL which is for computing the precision matrix from a observation data. More details can be found in the following paper:
+
 "Efficient admm algorithm via the QUAdratic Loss (EQUAL) for precision matrix estimation" [arxiv](https://arxiv.org/abs/1811.04545)  
 
-## Welcome Any Comments or Suggestions
 This is my first R package and welcome any comments or suggesiongs.
 
 ## Getting Started
-
-These instructions will give you a toy Example for implement the package.
+These instructions will give you a toy example for implementing the package.
 
 ### Prerequisites
-
 What things you need to install the software and how to install them
 
 ```
-require("MASS")
-require("Rcpp")
-require("Matrix")
+install.packages("MASS")
+install.packages("Rcpp")
+install.packages("Matrix")
+install.packages("devtools")
 ```
-### Toy Example for EQUAL
+### Install EQUAL
+
+```
+library("devtools")
+devtools::install_github("cescwang85/EQUAL")
+```
+
+### Toy example for EQUAL
 
 ```
 rm(list = ls())
-set.seed(520)
-require("devtools")
-devtools::install_github("cescwang85/EQUAL")
+set.seed(123)
 library('MASS')
 library('Rcpp')
 library('Matrix')
 library('EQUAL')
-n=200
-p=100
+n=100
+p=500
 Omega<-toeplitz(0.5^(1:p-1))
 X=mvrnorm(n,rep(0,p),solve(Omega))
 aa<-EQUAL(X)
@@ -41,4 +45,4 @@ obj2<-CVEQUAL(X,type=FALSE)
 obj1$Omega[1:10,1:10]
 obj2$Omega[1:10,1:10]
 ```
-A line I wrote on my local computer
+On my computer, it takes about one second for a solution path and five seconds for getting a final estimation with 5-folds cross-validation for the above toy example. Overall, the computation complexity of the algorithm is linear in both the sample size(n) and the number of parameters (p^2).  
