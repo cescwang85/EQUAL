@@ -1,7 +1,6 @@
 # Introduction for R package EQUAL
-We develop an R package EQUAL which is for computing the precision matrix from a observation data. More details can be found in the following paper:
-
-"Efficient admm algorithm via the QUAdratic Loss (EQUAL) for precision matrix estimation" [arxiv](https://arxiv.org/abs/1811.04545)  
+We develop an Efficient admm algorithm via the QUAdratic Loss (EQUAL) for precision matrix estimation. More details can be found in the following paper:
+"An efficient ADMM algorithm for high dimensional precision matrix estimation via penalized quadratic loss" by Cheng Wang and Binyan Jiang [(arxiv)](https://arxiv.org/abs/1811.04545).  
 
 This is my first R package and welcome any comments or suggesiongs.
 
