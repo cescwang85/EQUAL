@@ -3,15 +3,16 @@
 // [[Rcpp::export]]
 arma::mat soft(arma::mat A,double a, double diag=0){
   a=abs(a);
+  arma::mat C=(A>=a)%(A-a)+(A<=(-a))%(A+a);
+if (diag==0){
   arma::mat B=A-arma::diagmat(arma::diagvec(A));
   B=(B>=a)%(B-a)+(B<=(-a))%(B+a);
   B=B+arma::diagmat(arma::diagvec(A));
-  arma::mat C=B;
-  if (diag>0) {C=(A>=a)%(A-a)+(A<=(-a))%(A+a);}
+  C=B;}
   return C;}
 
 // [[Rcpp::export]]
-Rcpp::List equal1(arma::mat X,arma::vec lambda,double err=10^(-5),int maxIter=10^3,double rho=1,int diag=0){
+Rcpp::List equal1(arma::mat X,arma::vec lambda,double err=10^(-5),int maxIter=10^3,double rho=1, int diag=0){
   int n=X.n_rows;
   int p=X.n_cols;
   int m=(p>n)*n+(p<=n)*p;

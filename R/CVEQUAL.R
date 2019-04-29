@@ -6,9 +6,10 @@
 #' @param lambda user supplied tuning parameter; Default is NULL and the program compute its own
 #' sequence based on \code{nlambda}.
 #' @param  nlambda the length of the tuning parameter sequence which is available when lambda is NULL. Default is 50.
-#' @param  lambda.min.ratio smallest value for lambda, as a fraction of lambda.max which is available when lambda is NULL. 
+#' @param  lambda.min smallest value for lambda, as a fraction of lambda.max which is available when lambda is NULL. 
 #' Default is sqrt(log(p)/n).
-#' @param err the precision used to stop the convergence. Default is 1e-5.
+#' @param err the precision used to stop the convergence. Default is 1e-5. 
+#' Iterations stop when average absolute parameter change is less than \code{err}.
 #' @param maxIter Maximum number of iterations. Default is 1000.
 #' @param rho step parameter for the ADMM. Default is 1.
 #' @return A list with components
@@ -16,7 +17,7 @@
 #' \item{cvlambda}{the chosen lambda by cross-validation.}
 #' \item{lambda}{the used lambda list for cross-validation.}
 #' \item{CVloss}{the empirical loss of cross-validation related to lambda.}
-CVEQUAL<-function(X,K=5,type=TRUE,sdiag=FALSE,lambda=NULL,lambda.min=sqrt(log(ncol(X))/nrow(X)),nlambda=50,err=10^(-5),maxIter =1000)
+CVEQUAL<-function(X,K=5,type=TRUE,sdiag=FALSE,lambda=NULL,lambda.min=sqrt(log(ncol(X))/nrow(X)),nlambda=50,err=10^(-5),maxIter =1000,rho=1)
 {p=ncol(X);
 n=nrow(X);
 Sn<-cov(X);
@@ -39,7 +40,7 @@ for (k in 1:K){
 mcv<-apply(CV, 2, mean);
 lambda<-obj$lambda;
 cvlambda<-lambda[which.min(mcv)];
-hOmega<-EQUAL(X,lambda =cvlambda,sdiag=sdiag,type=type,err=err,maxIter=maxIter)
+hOmega<-EQUAL(X,lambda =cvlambda,sdiag=sdiag,type=type,err=err,maxIter=maxIter,rho=rho)
 return(list(Omega=as.matrix(hOmega$Omega[[1]]),cvlambda=cvlambda,lambda=lambda,CVloss=mcv))
 }
 

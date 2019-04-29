@@ -6,28 +6,29 @@
 \usage{
 EQUAL(X, type = TRUE, sdiag = FALSE, lambda = NULL,
   lambda.min = sqrt(log(ncol(X))/nrow(X)), nlambda = 50,
-  err = 10^(-5), maxIter = 1000)
+  err = 10^(-5), maxIter = 1000, rho = 1)
 }
 \arguments{
 \item{X}{data matrix of dimension n*p.}
 
 \item{type}{Should the loss function be symmetric? Default is TRUE.}
 
-\item{sdiag}{Should diagonal elements of inverse covariance be penalized? Default is FALSE.}
+\item{sdiag}{Should diagonal of inverse covariance be penalized? Default is FALSE.}
 
-\item{lambda}{user supplied tuning parameter; Default is NULL and the program will compute its own
+\item{lambda}{user supplied tuning parameter; Default is NULL and the program compute its own
 sequence based on \code{nlambda}.}
-
-\item{nlambda}{the length of the tuning parameter sequence which is available when lambda is NULL. Default is 50.}
-
-\item{err}{the precision used to stop the convergence. Default is 1e-5.}
-
-\item{maxIter}{Maximum number of iterations. Default is 1000.}
 
 \item{lambda.min}{smallest value for lambda, as a fraction of lambda.max which is available when lambda is NULL. 
 Default is sqrt(log(p)/n).}
 
-\item{rho}{step parameter for ADMM. Default is 1.}
+\item{nlambda}{the length of the tuning parameter sequence which is available when lambda is NULL. Default is 50.}
+
+\item{err}{the precision used to stop the convergence. Default is 1e-5. 
+Iterations stop when average absolute parameter change is less than \code{err}.}
+
+\item{maxIter}{Maximum number of iterations. Default is 1000.}
+
+\item{rho}{step parameter for the ADMM. Default is 1.}
 }
 \value{
 A list with components
