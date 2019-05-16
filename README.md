@@ -1,8 +1,8 @@
 # Introduction for R package EQUAL
-We develop an Efficient admm algorithm via the QUAdratic Loss (EQUAL) for precision matrix estimation. More details can be found in the following paper:
-"An efficient ADMM algorithm for high dimensional precision matrix estimation via penalized quadratic loss" by Cheng Wang and Binyan Jiang [(arxiv)](https://arxiv.org/abs/1811.04545).  
+We develop an Efficient admm algorithm via the QUAdratic Loss (EQUAL) for precision matrix estimation. This is my first R package and welcome any comments or suggestions.
 
-This is my first R package and welcome any comments or suggestions.
+# References 
+Cheng Wang and Binyan Jiang. "[An efficient ADMM algorithm for high dimensional precision matrix estimation via penalized quadratic loss.](https://arxiv.org/abs/1811.04545)" arXiv preprint arXiv:1811.04545 (2018).
 
 ## Getting Started
 These instructions will give you a toy example for implementing the package.
@@ -23,7 +23,7 @@ library("devtools")
 devtools::install_github("cescwang85/EQUAL")
 ```
 
-### Toy example for EQUAL
+### Toy example 
 
 ```
 rm(list = ls())
