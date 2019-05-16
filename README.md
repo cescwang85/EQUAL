@@ -2,7 +2,7 @@
 We develop an Efficient admm algorithm via the QUAdratic Loss (EQUAL) for precision matrix estimation. More details can be found in the following paper:
 "An efficient ADMM algorithm for high dimensional precision matrix estimation via penalized quadratic loss" by Cheng Wang and Binyan Jiang [(arxiv)](https://arxiv.org/abs/1811.04545).  
 
-This is my first R package and welcome any comments or suggesiongs.
+This is my first R package and welcome any comments or suggestions.
 
 ## Getting Started
 These instructions will give you a toy example for implementing the package.
