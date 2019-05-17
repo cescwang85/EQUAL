@@ -33,7 +33,7 @@ library('Rcpp')
 library('Matrix')
 library('EQUAL')
 n=100
-p=500
+p=200
 Omega<-toeplitz(0.5^(1:p-1))
 X=mvrnorm(n,rep(0,p),solve(Omega))
 aa<-EQUAL(X)
