@@ -32,8 +32,8 @@ library('MASS')
 library('Rcpp')
 library('Matrix')
 library('EQUAL')
-n=100
-p=500
+n=200
+p=100
 Omega<-toeplitz(0.5^(1:p-1))
 X=mvrnorm(n,rep(0,p),solve(Omega))
 aa<-EQUAL(X)
@@ -44,4 +44,4 @@ obj2<-CVEQUAL(X,type=FALSE)
 obj1$Omega[1:10,1:10]
 obj2$Omega[1:10,1:10]
 ```
-On my computer, it takes about one second for a solution path and five seconds for getting a final estimation with 5-folds cross-validation for the above toy example. Overall, the computation complexity of the algorithm is linear in both the sample size(n) and the number of parameters (p^2).  
+Overall, the computation complexity for each iteration of the algorithm is linear in both the sample size (n) and the number of parameters (p^2).  
