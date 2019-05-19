@@ -45,6 +45,7 @@ Rcpp::List equal1(arma::mat X,arma::vec lambda,double err=10^(-5),int maxIter=10
       aX=L-D*(U.t()*L);
       aZ=soft(aX+aU,lam/rho,diag);
       aU=aU+aX-aZ;
+      aZ=(aZ+aZ.t())/2;
       ee=mean(mean(abs(aZ-Z1)));
       i=i+1;
     }
@@ -98,6 +99,7 @@ Rcpp::List equal2(arma::mat X,arma::vec lambda,double err=10^(-5),int maxIter=10
      aX=L-L2-L2.t()+U1*(D%(U1.t()*L1))*U1.t();
      aZ=soft(aX+aU,lam/rho,diag);
      aU=aU+aX-aZ;
+     aZ=(aZ+aZ.t())/2;
      ee=mean(mean(abs(aZ-Z1)));
      i=i+1;
    }
