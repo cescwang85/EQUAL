@@ -39,6 +39,9 @@ Rcpp::List equal1(arma::mat X,arma::vec lambda,double err=10^(-5),int maxIter=10
   for (int k=0;k<nlambda;++k) {
     lam=lambda(k);
     int i=0;
+    /*Cold Start*/   
+    aZ=arma::eye(p,p);
+    aZ=arma::eye(p,p);
     while (((i<maxIter)&&(ee>err))||(i==0))
     { Z1=aZ;
       L=arma::eye(p,p)/rho+aZ-aU;
@@ -79,7 +82,7 @@ Rcpp::List equal2(arma::mat X,arma::vec lambda,double err=10^(-5),int maxIter=10
  arma::vec niter=lambda;
  /*Intialization*/
  arma::mat aZ=arma::eye(p,p);
- arma::mat aU=arma::zeros(p,p);
+ arma::mat aZ=arma::eye(p,p);
  arma::mat aX;
  arma::mat L;
  arma::mat L1;
@@ -90,6 +93,9 @@ Rcpp::List equal2(arma::mat X,arma::vec lambda,double err=10^(-5),int maxIter=10
  for (int k=0;k<nlambda;++k) {
    lam=lambda(k);
    int i=0;
+/*Cold Start*/   
+   aZ=arma::eye(p,p);
+   aZ=arma::eye(p,p);
    while (((i<maxIter)&&(ee>err))||(i==0))
    { Z1=aZ;
      L=arma::eye(p,p)/rho+aZ-aU;
