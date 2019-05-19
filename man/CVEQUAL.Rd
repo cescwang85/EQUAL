@@ -6,7 +6,7 @@
 \usage{
 CVEQUAL(X, K = 5, type = TRUE, sdiag = FALSE, lambda = NULL,
   lambda.min = sqrt(log(ncol(X))/nrow(X)), nlambda = 50,
-  err = 10^(-5), maxIter = 1000)
+  err = 10^(-5), maxIter = 1000, rho = 1)
 }
 \arguments{
 \item{X}{data matrix of dimension n*p.}
@@ -20,14 +20,15 @@ CVEQUAL(X, K = 5, type = TRUE, sdiag = FALSE, lambda = NULL,
 \item{lambda}{user supplied tuning parameter; Default is NULL and the program compute its own
 sequence based on \code{nlambda}.}
 
+\item{lambda.min}{smallest value for lambda, as a fraction of lambda.max which is available when lambda is NULL. 
+Default is sqrt(log(p)/n).}
+
 \item{nlambda}{the length of the tuning parameter sequence which is available when lambda is NULL. Default is 50.}
 
-\item{err}{the precision used to stop the convergence. Default is 1e-5.}
+\item{err}{the precision used to stop the convergence. Default is 1e-5. 
+Iterations stop when average absolute parameter change is less than \code{err}.}
 
 \item{maxIter}{Maximum number of iterations. Default is 1000.}
-
-\item{lambda.min.ratio}{smallest value for lambda, as a fraction of lambda.max which is available when lambda is NULL. 
-Default is sqrt(log(p)/n).}
 
 \item{rho}{step parameter for the ADMM. Default is 1.}
 }

@@ -13,6 +13,7 @@ What things you need to install the software and how to install them
 ```
 install.packages("MASS")
 install.packages("Rcpp")
+install.packages("RcppArmadillo")
 install.packages("Matrix")
 install.packages("devtools")
 ```
