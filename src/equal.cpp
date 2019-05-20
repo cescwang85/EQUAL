@@ -2,7 +2,7 @@
 // [[Rcpp::depends(RcppArmadillo)]]
 // [[Rcpp::export]]
 arma::mat soft(arma::mat A,double a, int diag=0){
-  a=fabs(a);
+  a=std::abs(a);
   arma::mat C=(A>=a)%(A-a)+(A<=(-a))%(A+a);
 if (diag==0){
   arma::mat B=A-arma::diagmat(arma::diagvec(A));
