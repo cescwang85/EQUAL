@@ -7,14 +7,14 @@
 using namespace Rcpp;
 
 // soft
-arma::mat soft(arma::mat A, double a, double diag);
+arma::mat soft(arma::mat A, double a, int diag);
 RcppExport SEXP _EQUAL_soft(SEXP ASEXP, SEXP aSEXP, SEXP diagSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< arma::mat >::type A(ASEXP);
     Rcpp::traits::input_parameter< double >::type a(aSEXP);
-    Rcpp::traits::input_parameter< double >::type diag(diagSEXP);
+    Rcpp::traits::input_parameter< int >::type diag(diagSEXP);
     rcpp_result_gen = Rcpp::wrap(soft(A, a, diag));
     return rcpp_result_gen;
 END_RCPP

@@ -1,8 +1,8 @@
 #include <RcppArmadillo.h>
 // [[Rcpp::depends(RcppArmadillo)]]
 // [[Rcpp::export]]
-arma::mat soft(arma::mat A,double a, double diag=0){
-  a=abs(a);
+arma::mat soft(arma::mat A,double a, int diag=0){
+  a=fabs(a);
   arma::mat C=(A>=a)%(A-a)+(A<=(-a))%(A+a);
 if (diag==0){
   arma::mat B=A-arma::diagmat(arma::diagvec(A));
@@ -45,15 +45,11 @@ Rcpp::List equal1(arma::mat X,arma::vec lambda,double err=10^(-5),int maxIter=10
       aX=L-D*(U.t()*L);
       aZ=soft(aX+aU,lam/rho,diag);
       aU=aU+aX-aZ;
-      aZ=(aZ+aZ.t())/2;
       ee=mean(mean(abs(aZ-Z1)));
       i=i+1;
     }
     Omega_all(k)=arma::sp_mat((abs(aZ)<abs(aZ.t()))%aZ+(abs(aZ)>=abs(aZ.t()))%aZ.t());
     niter(k)=i;
-    /*Cold Start*/   
-    aZ=arma::eye(p,p);
-    aU=arma::zeros(p,p);
   }
   return Rcpp::List::create(Rcpp::Named("Omega") =Omega_all,
                             Rcpp::Named("lambda") =lambda,
@@ -102,15 +98,11 @@ Rcpp::List equal2(arma::mat X,arma::vec lambda,double err=10^(-5),int maxIter=10
      aX=L-L2-L2.t()+U1*(D%(U1.t()*L1))*U1.t();
      aZ=soft(aX+aU,lam/rho,diag);
      aU=aU+aX-aZ;
-     aZ=(aZ+aZ.t())/2;
      ee=mean(mean(abs(aZ-Z1)));
      i=i+1;
    }
    Omega_all(k)=arma::sp_mat(aZ);
    niter(k)=i;
-   /*Cold Start*/   
-   aZ=arma::eye(p,p);
-   aU=arma::zeros(p,p);
  }
  return Rcpp::List::create(Rcpp::Named("Omega") =Omega_all,
                            Rcpp::Named("lambda") =lambda,
