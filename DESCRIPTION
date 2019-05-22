@@ -2,7 +2,7 @@ Package: EQUAL
 Type: Package
 Title: An efficient ADMM algorithm for high dimensional precision matrix estimation via penalized quadratic loss
 Version: 1.2
-Date: 2019-4-29
+Date: 2019-5-22
 Author: Cheng Wang and Binyan Jiang
 Maintainer: Cheng Wang <chengwang@sjtu.edu.cn>
 Description: We develop an Efficient admm algorithm via the QUAdratic Loss (EQUAL) for high dimensional precision matrix estimation.
