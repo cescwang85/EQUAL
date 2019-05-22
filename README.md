@@ -1,14 +1,17 @@
 # Introduction for R package EQUAL
-We develop an Efficient admm algorithm via the QUAdratic Loss (EQUAL) for precision matrix estimation. This is my first R package and welcome any comments or suggestions.
+We develop an Efficient admm algorithm via the QUAdratic Loss (EQUAL) for precision matrix estimation. The computation complexity for each iteration of the algorithm is linear in both the sample size (n) and the number of parameters (p^2).  
+
+
+This is my first R package and welcome any comments or suggestions.
 
 # References 
-Cheng Wang and Binyan Jiang. "[An efficient ADMM algorithm for high dimensional precision matrix estimation via penalized quadratic loss.](https://arxiv.org/abs/1811.04545)" arXiv preprint arXiv:1811.04545 (2018).
+Cheng Wang and Binyan Jiang. "An efficient ADMM algorithm for high dimensional precision matrix estimation via penalized quadratic loss", 2019+.  [(arxiv)](https://arxiv.org/abs/1811.04545)".
 
-## Getting Started
+# Getting Started
 These instructions will give you a toy example for implementing the package.
 
-### Prerequisites
-What things you need to install the software and how to install them
+## Prerequisites
+What things you need to install the software and how to install them.  The key functions of the package is writing in C++ supported by the great Rcpp package. So, make sure your OS can complies C++ code. For example,  you should install Rtools under Windows and Xcode under MacOS.  After that, the following R packages are also necessary.
 
 ```
 install.packages("MASS")
@@ -17,14 +20,14 @@ install.packages("RcppArmadillo")
 install.packages("Matrix")
 install.packages("devtools")
 ```
-### Install EQUAL
+## Install EQUAL
 
 ```
 library("devtools")
 devtools::install_github("cescwang85/EQUAL")
 ```
 
-### Toy example 
+## Toy example 
 
 ```
 rm(list = ls())
@@ -45,4 +48,5 @@ obj2<-CVEQUAL(X,type=FALSE)
 obj1$Omega[1:10,1:10]
 obj2$Omega[1:10,1:10]
 ```
-Overall, the computation complexity for each iteration of the algorithm is linear in both the sample size (n) and the number of parameters (p^2).  
+The algorithm is very efficient and it takes less than one second for the toy example with accelerated BLAS. 
+
