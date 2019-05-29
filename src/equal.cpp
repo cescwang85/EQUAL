@@ -1,5 +1,17 @@
 #include <RcppArmadillo.h>
 // [[Rcpp::depends(RcppArmadillo)]]
+
+
+//' @title Element-wise Soft Thresholding Function for Matrix
+//' @description Soft thresholding function for Matrix
+//'
+//' @param A Matrix
+//' @param a scalar
+//' @param diag  Should diagonal elements of the Matrix be thresholding? Default is FALSE.
+//' @return Matrix after threholding
+//' 
+//' @export
+//'
 // [[Rcpp::export]]
 arma::mat soft(arma::mat A,double a, int diag=0){
   a=std::abs(a);
@@ -11,6 +23,23 @@ if (diag==0){
   C=B;}
   return C;}
 
+
+//' @title Non-symmetric version of EQUAL
+//' @description ADMM algorithm for high precision matrix estimation using asymmetic loss
+//' @param X data matrix of dimension n*p.
+//' @param lambda user supplied tuning parameter; 
+//' @param err the precision used to stop the convergence. Default is 1e-5. 
+//' Iterations stop when average absolute parameter change is less than \code{err}.
+//' @param maxIter Maximum number of iterations. Default is 1000.
+//' @param rho step parameter for the ADMM. Default is 1.
+//' @param diag  Should diagonal elements of the Matrix be thresholding? Default is FALSE.
+//' @return A list with components
+//' \item{Omega}{a list of sparse p*p matrices corresponding to lambda.}
+//' \item{lambda}{the used lambda for the solution path.}
+//' \item{niter}{the number of iterations for each element of lambda.}
+//' 
+//' @export
+//' 
 // [[Rcpp::export]]
 Rcpp::List equal1(arma::mat X,arma::vec lambda,double err=10^(-5),int maxIter=10^3,double rho=1, int diag=0){
   int n=X.n_rows;
@@ -58,6 +87,22 @@ Rcpp::List equal1(arma::mat X,arma::vec lambda,double err=10^(-5),int maxIter=10
 
 
 
+//' @title Symmetric version of EQUAL
+//' @description ADMM algorithm for high precision matrix estimation using symmetic loss
+//' @param X data matrix of dimension n*p.
+//' @param lambda user supplied tuning parameter; 
+//' @param err the precision used to stop the convergence. Default is 1e-5. 
+//' Iterations stop when average absolute parameter change is less than \code{err}.
+//' @param maxIter Maximum number of iterations. Default is 1000.
+//' @param rho step parameter for the ADMM. Default is 1.
+//' @param diag  Should diagonal elements of the Matrix be thresholding? Default is FALSE.
+//' @return A list with components
+//' \item{Omega}{a list of sparse p*p matrices corresponding to lambda.}
+//' \item{lambda}{the used lambda for the solution path.}
+//' \item{niter}{the number of iterations for each element of lambda.}
+//' 
+//' @export
+//' 
 // [[Rcpp::export]]
 Rcpp::List equal2(arma::mat X,arma::vec lambda,double err=10^(-5),int maxIter=10^3,double rho=1,int diag=0){
   int n=X.n_rows;
