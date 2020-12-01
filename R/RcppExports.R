@@ -31,7 +31,7 @@ soft <- function(A, a, diag = 0L) {
 #' 
 #' @export
 #' 
-equal1 <- function(X, lambda, err = 10^(-5), maxIter = 10^3L, rho = 1, diag = 0L) {
+equal1 <- function(X, lambda, err = 10^(-5), maxIter = 1000L, rho = 1, diag = 0L) {
     .Call(`_EQUAL_equal1`, X, lambda, err, maxIter, rho, diag)
 }
 
@@ -51,7 +51,7 @@ equal1 <- function(X, lambda, err = 10^(-5), maxIter = 10^3L, rho = 1, diag = 0L
 #' 
 #' @export
 #' 
-equal2 <- function(X, lambda, err = 10^(-5), maxIter = 10^3L, rho = 1, diag = 0L) {
+equal2 <- function(X, lambda, err = 10^(-5), maxIter = 1000L, rho = 1, diag = 0L) {
     .Call(`_EQUAL_equal2`, X, lambda, err, maxIter, rho, diag)
 }
 

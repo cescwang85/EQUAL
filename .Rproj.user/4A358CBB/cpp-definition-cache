@@ -1,35 +1,35 @@
 [
     {
-        "definitions" : [
+        "file": "/Users/chengwang/OneDrive/7Over/Github/EQUAL/src/equal.cpp",
+        "file_last_write": 1606634456.0,
+        "definitions": [
             {
-                "column" : 11,
-                "file" : "/Users/chengwang/Documents/6Over/Github/EQUAL/src/equal.cpp",
-                "kind" : 6,
-                "line" : 16,
-                "name" : "soft(arma::mat, double, int)",
-                "parent_name" : "",
-                "usr" : "c:@F@soft#$@N@arma@S@Mat>#d#d#I#"
+                "usr": "c:@F@soft#$@N@arma@S@Mat>#d#d#I#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "soft(arma::mat, double, int)",
+                "file": "/Users/chengwang/OneDrive/7Over/Github/EQUAL/src/equal.cpp",
+                "line": 16,
+                "column": 11
             },
             {
-                "column" : 12,
-                "file" : "/Users/chengwang/Documents/6Over/Github/EQUAL/src/equal.cpp",
-                "kind" : 6,
-                "line" : 44,
-                "name" : "equal1(arma::mat, arma::vec, double, int, double, int)",
-                "parent_name" : "",
-                "usr" : "c:@F@equal1#$@N@arma@S@Mat>#d#$@N@arma@S@Col>#d#d#I#d#I#"
+                "usr": "c:@F@equal1#$@N@arma@S@Mat>#d#$@N@arma@S@Col>#d#d#I#d#I#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "equal1(arma::mat, arma::vec, double, int, double, int)",
+                "file": "/Users/chengwang/OneDrive/7Over/Github/EQUAL/src/equal.cpp",
+                "line": 44,
+                "column": 12
             },
             {
-                "column" : 12,
-                "file" : "/Users/chengwang/Documents/6Over/Github/EQUAL/src/equal.cpp",
-                "kind" : 6,
-                "line" : 107,
-                "name" : "equal2(arma::mat, arma::vec, double, int, double, int)",
-                "parent_name" : "",
-                "usr" : "c:@F@equal2#$@N@arma@S@Mat>#d#$@N@arma@S@Col>#d#d#I#d#I#"
+                "usr": "c:@F@equal2#$@N@arma@S@Mat>#d#$@N@arma@S@Col>#d#d#I#d#I#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "equal2(arma::mat, arma::vec, double, int, double, int)",
+                "file": "/Users/chengwang/OneDrive/7Over/Github/EQUAL/src/equal.cpp",
+                "line": 107,
+                "column": 12
             }
-        ],
-        "file" : "/Users/chengwang/Documents/6Over/Github/EQUAL/src/equal.cpp",
-        "file_last_write" : 1559125535.000000
+        ]
     }
 ]

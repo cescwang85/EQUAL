@@ -41,7 +41,7 @@ if (diag==0){
 //' @export
 //' 
 // [[Rcpp::export]]
-Rcpp::List equal1(arma::mat X,arma::vec lambda,double err=10^(-5),int maxIter=10^3,double rho=1, int diag=0){
+Rcpp::List equal1(arma::mat X,arma::vec lambda,double err=10^(-5),int maxIter=1000,double rho=1, int diag=0){
   int n=X.n_rows;
   int p=X.n_cols;
   int m=(p>n)*n+(p<=n)*p;
@@ -104,7 +104,7 @@ Rcpp::List equal1(arma::mat X,arma::vec lambda,double err=10^(-5),int maxIter=10
 //' @export
 //' 
 // [[Rcpp::export]]
-Rcpp::List equal2(arma::mat X,arma::vec lambda,double err=10^(-5),int maxIter=10^3,double rho=1,int diag=0){
+Rcpp::List equal2(arma::mat X,arma::vec lambda,double err=10^(-5),int maxIter=1000,double rho=1,int diag=0){
   int n=X.n_rows;
   int p=X.n_cols;
   int m=(p>n)*n+(p<=n)*p;

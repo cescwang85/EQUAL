@@ -1,9 +1,9 @@
 {
-    "path" : "~/Documents/6Over/Github/EQUAL",
-    "sortOrder" : [
+    "path": "~/OneDrive/7Over/Github",
+    "sortOrder": [
         {
-            "ascending" : true,
-            "columnIndex" : 2
+            "columnIndex": 2,
+            "ascending": true
         }
     ]
 }
