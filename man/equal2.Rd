@@ -4,8 +4,7 @@
 \alias{equal2}
 \title{Symmetric version of EQUAL}
 \usage{
-equal2(X, lambda, err = 10^(-5), maxIter = 10^3L, rho = 1,
-  diag = 0L)
+equal2(X, lambda, err = 10^(-5), maxIter = 1000L, rho = 1, diag = 0L)
 }
 \arguments{
 \item{X}{data matrix of dimension n*p.}

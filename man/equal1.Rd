@@ -4,8 +4,7 @@
 \alias{equal1}
 \title{Non-symmetric version of EQUAL}
 \usage{
-equal1(X, lambda, err = 10^(-5), maxIter = 10^3L, rho = 1,
-  diag = 0L)
+equal1(X, lambda, err = 10^(-5), maxIter = 1000L, rho = 1, diag = 0L)
 }
 \arguments{
 \item{X}{data matrix of dimension n*p.}

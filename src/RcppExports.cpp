@@ -6,6 +6,11 @@
 
 using namespace Rcpp;
 
+#ifdef RCPP_USE_GLOBAL_ROSTREAM
+Rcpp::Rostream<true>&  Rcpp::Rcout = Rcpp::Rcpp_cout_get();
+Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
+#endif
+
 // soft
 arma::mat soft(arma::mat A, double a, int diag);
 RcppExport SEXP _EQUAL_soft(SEXP ASEXP, SEXP aSEXP, SEXP diagSEXP) {

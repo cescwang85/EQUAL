@@ -4,9 +4,17 @@
 \alias{EQUAL}
 \title{Efficient admm algorithm via the QUAdratic Loss (EQUAL) for precision matrix estimation}
 \usage{
-EQUAL(X, type = TRUE, sdiag = FALSE, lambda = NULL,
-  lambda.min = sqrt(log(ncol(X))/nrow(X)), nlambda = 50,
-  err = 10^(-5), maxIter = 1000, rho = 1)
+EQUAL(
+  X,
+  type = TRUE,
+  sdiag = FALSE,
+  lambda = NULL,
+  lambda.min = sqrt(log(ncol(X))/nrow(X)),
+  nlambda = 50,
+  err = 10^(-5),
+  maxIter = 1000,
+  rho = 1
+)
 }
 \arguments{
 \item{X}{data matrix of dimension n*p.}

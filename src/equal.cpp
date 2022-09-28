@@ -77,8 +77,9 @@ Rcpp::List equal1(arma::mat X,arma::vec lambda,double err=10^(-5),int maxIter=10
       ee=mean(mean(abs(aZ-Z1)));
       i=i+1;
     }
-    Omega_all(k)=arma::sp_mat((abs(aZ)<abs(aZ.t()))%aZ+(abs(aZ)>=abs(aZ.t()))%aZ.t());
+    Omega_all(k)=arma::sp_mat(aZ);
     niter(k)=i;
+/* Omega_all(k)=arma::sp_mat((abs(aZ)<abs(aZ.t()))%aZ+(abs(aZ)>=abs(aZ.t()))%aZ.t());*/
   }
   return Rcpp::List::create(Rcpp::Named("Omega") =Omega_all,
                             Rcpp::Named("lambda") =lambda,
