@@ -43,6 +43,6 @@ cvlambda<-lambda[which.min(mcv)];
 hOmega<-EQUAL(X,lambda =cvlambda,sdiag=sdiag,type=type,err=err,maxIter=maxIter,rho=rho)
 Omega=as.matrix(hOmega$Omega[[1]]);
 Omega=(abs(Omega)<abs(t(Omega)))*Omega+(abs(Omega)>=abs(t(Omega)))*t(Omega);
-return(list(Omega=Omega,cvlambda=cvlambda,lambda=lambda,CVloss=mcv))
+return(list(Omega=as(Omega, "sparseMatrix"),cvlambda=cvlambda,lambda=lambda,CVloss=mcv))
 }
 

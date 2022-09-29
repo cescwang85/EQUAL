@@ -6,27 +6,22 @@
 #' @return A  list of \eqn{p \times p} precision matrices whose support is consistent with the one of \code{obj}.
 
 refit_list<-function(X,obj,rho=1,err=1e-3)
-{
+{ m=length(obj);
+  re=obj;
+  Sn=cov(X);
   p=ncol(X);
-  re<-obj
-  m=length(obj);
-  H=solve(cov(X)+rho*diag(p));
+  n=nrow(X);
 for (i in 1:m){  
-  aa=obj[[i]]
-  idx<-1+aa@i
-  idy<-rep(1:p,diff(aa@p))
-  aZ=diag(p)
-  aU=matrix(0,p,p)
-  ##iterations
-  for (k in 1:100){
-    aX=H%*%(diag(p)+rho*(aZ-aU));
-    aZ=matrix(0,p,p)
-    aZ[idx+(idy-1)*p]=(aX+aU)[idx+(idy-1)*p];
-    aU=aU+aX-aZ
-    ee=norm(aX-aZ,type='F')
-    if (ee<err) break;
-  }
-  re[[i]]=Matrix(aZ)}
+  Omega=as.matrix(obj[[i]]);
+  for (k in 1:p)
+  {  id=(Omega[,k]!=0);
+  if (sum(id)<n-1){
+    ek=rep(0,p);
+    ek[k]=1
+    Omega[id,k]=solve(Sn[id,id],ek[id])
+  }}
+  re[[i]]=as((Omega+t(Omega))/2, "sparseMatrix")
+}
 return(re)  
 }
 

@@ -43,8 +43,8 @@ mcv<-apply(CV, 2, mean);
 lambda<-obj$lambda;
 cvlambda<-lambda[which.min(mcv)];
 hOmega<-EQUAL(X,lambda =cvlambda,sdiag=sdiag,type=type,err=err,maxIter=maxIter,rho=rho)$Omega[[1]];
-Omega=refit_mat(X,hOmega);
+Omega=as.matrix(refit_mat(X,hOmega));
 Omega=(abs(Omega)<abs(t(Omega)))*Omega+(abs(Omega)>=abs(t(Omega)))*t(Omega);
-return(list(Omega=Omega,cvlambda=cvlambda,lambda=lambda,cvloss=mcv))
+return(list(Omega=as(Omega, "sparseMatrix"),cvlambda=cvlambda,lambda=lambda,cvloss=mcv))
 }
 
