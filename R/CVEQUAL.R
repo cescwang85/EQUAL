@@ -1,4 +1,4 @@
-#' CVEQUAL where the tuning parameter is chosen by cross-validation
+#' Cross-validation function for EQUAL
 #' @param X data matrix of dimension n*p.
 #' @param K the number of folds. Default is 5.
 #' @param type Should the loss function be symmetric? Default is TRUE.
@@ -16,8 +16,8 @@
 #' \item{Omega}{the estimated p*p precision matrix.}
 #' \item{cvlambda}{the chosen lambda by cross-validation.}
 #' \item{lambda}{the used lambda list for cross-validation.}
-#' \item{CVloss}{the empirical loss of cross-validation related to lambda.}
-CVEQUAL<-function(X,K=5,type=TRUE,sdiag=FALSE,lambda=NULL,lambda.min=sqrt(log(ncol(X))/nrow(X)),nlambda=50,err=10^(-5),maxIter =1000,rho=1)
+#' \item{cvloss}{the empirical loss of cross-validation related to lambda.}
+cvEQUAL<-function(X,K=5,type=TRUE,sdiag=FALSE,lambda=NULL,lambda.min=sqrt(log(ncol(X))/nrow(X)),nlambda=50,err=10^(-5),maxIter =1000,rho=1)
 {p=ncol(X);
 n=nrow(X);
 Sn<-cov(X);

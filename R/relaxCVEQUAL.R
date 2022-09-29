@@ -1,4 +1,4 @@
-#' CVEQUAL where the tuning parameter is chosen by cross-validation for each column
+#' Relaxed cross-validation function for EQUAL
 #' @param X data matrix of dimension n*p.
 #' @param K the number of folds. Default is 5.
 #' @param type Should the loss function be symmetric? Default is TRUE.
@@ -16,10 +16,9 @@
 #' \item{Omega}{the estimated p*p precision matrix.}
 #' \item{cvlambda}{the chosen lambda by cross-validation.}
 #' \item{lambda}{the used lambda list for cross-validation.}
-#' \item{CVloss}{the empirical loss of cross-validation related to lambda.}
-col_CVEQUAL<-function(X,K=5,type=TRUE,sdiag=FALSE,lambda=NULL,lambda.min=sqrt(log(ncol(X))/nrow(X)),nlambda=50,err=10^(-5),maxIter =1000,rho=1)
-{
-p=ncol(X);
+#' \item{cvloss}{the empirical loss of cross-validation related to lambda.}
+relax_cvEQUAL<-function(X,K=5,type=TRUE,sdiag=FALSE,lambda=NULL,lambda.min=sqrt(log(ncol(X))/nrow(X)),nlambda=50,err=10^(-5),maxIter =1000,rho=1)
+{p=ncol(X);
 n=nrow(X);
 Sn<-cov(X);
 A<-abs(Sn-diag(diag(Sn)));
@@ -27,26 +26,25 @@ if (is.null(lambda)){lambda=exp(seq(log(lambda.min),0,length.out =nlambda))*max(
 lambda<-sort(lambda,decreasing =TRUE)
 
 fold<-split(1:n, rep(1:K, length =n));
-CV<-array(0,dim=c(p,K,nlambda));
+CV<-matrix(0,nrow=K,ncol=nlambda);
 for (k in 1:K){
   xtrain=X[-fold[[k]],];
   xtest=X[fold[[k]],];
-  S1<-cov(xtest);
+  x1<-scale(xtest,center =TRUE,scale =FALSE)/sqrt(nrow(xtest)-1);
   obj<-EQUAL(xtrain,sdiag=sdiag,type=type,lambda =lambda,err=10*err,maxIter =100)
+  ref_obj=refit_list(xtrain,obj$Omega)
+  
   for (i in 1:nlambda){
-    hOme<-as.matrix(obj$Omega[[i]]);
-    CV[,k,i]=diag(hOme%*%S1%*%t(hOme))/2-diag(hOme)
+    hOme<-as.matrix(ref_obj[[i]]);
+    CV[k,i]=sum((x1%*%hOme)^2)/2-sum(diag(hOme));
   }
 }
-cumCV<-apply(CV,c(1,3),sum)
-id<-apply(cumCV, 1, which.min);
-
-hOmega<-EQUAL(X,lambda =lambda,sdiag=sdiag,type=type,err=err,maxIter=maxIter,rho=rho)$Omega
-
-Omega_final=matrix(0,p,p)
-for (j in 1:p)
-{Omega_final[,j]=hOmega[[id[j]]][,j]}
-Omega_final=(Omega_final+t(Omega_final))/2
-return(list(Omega=Omega_final,cvlambda=lambda[id],lambda=lambda,CVloss=cumCV))
+mcv<-apply(CV, 2, mean);
+lambda<-obj$lambda;
+cvlambda<-lambda[which.min(mcv)];
+hOmega<-EQUAL(X,lambda =cvlambda,sdiag=sdiag,type=type,err=err,maxIter=maxIter,rho=rho)$Omega[[1]];
+Omega=refit_mat(X,hOmega);
+Omega=(abs(Omega)<abs(t(Omega)))*Omega+(abs(Omega)>=abs(t(Omega)))*t(Omega);
+return(list(Omega=Omega,cvlambda=cvlambda,lambda=lambda,cvloss=mcv))
 }
 

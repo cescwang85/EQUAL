@@ -10,8 +10,7 @@
                 "name": "soft(int, double, int)",
                 "file": "/Users/chengwang/Dropbox/6Over/Github/EQUAL/src/equal.cpp",
                 "line": 16,
-                "column": 11,
-                "hidden": false
+                "column": 11
             },
             {
                 "usr": "c:@F@equal1#I#I#d#I#d#I#",
@@ -20,8 +19,7 @@
                 "name": "equal1(int, int, double, int, double, int)",
                 "file": "/Users/chengwang/Dropbox/6Over/Github/EQUAL/src/equal.cpp",
                 "line": 44,
-                "column": 12,
-                "hidden": false
+                "column": 12
             },
             {
                 "usr": "c:@F@equal2#I#I#d#I#d#I#",
@@ -30,10 +28,8 @@
                 "name": "equal2(int, int, double, int, double, int)",
                 "file": "/Users/chengwang/Dropbox/6Over/Github/EQUAL/src/equal.cpp",
                 "line": 108,
-                "column": 12,
-                "hidden": false
+                "column": 12
             }
-        ],
-        "hidden": false
+        ]
     }
 ]
