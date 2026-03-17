@@ -5,7 +5,7 @@ We develop an Efficient admm algorithm via the QUAdratic Loss (EQUAL) for precis
 This is my first R package and welcome any comments or suggestions.
 
 # References 
-Cheng Wang and Binyan Jiang, An efficient ADMM algorithm for high dimensional precision matrix estimation via penalized quadratic loss, Computational Statistics & Data Analysis, 142, 106812，2020.  [(arXiv)](https://arxiv.org/abs/1811.04545).
+Cheng Wang and Binyan Jiang, [An efficient ADMM algorithm for high dimensional precision matrix estimation via penalized quadratic loss](https://doi.org/10.1016/j.csda.2019.106812), Computational Statistics & Data Analysis, 142, 106812，2020.  [(arXiv:1811.04545)](https://arxiv.org/abs/1811.04545).
 
 # Getting Started
 These instructions will give you a toy example for implementing the package.
